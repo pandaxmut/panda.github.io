@@ -1,0 +1,846 @@
+
+<!DOCTYPE html><html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.1" theme-name="Stellar" theme-version="1.28.1">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  
+  <title>个人消费记账系统 - Hexo</title>
+
+  
+    <meta name="description" content="个人消费记账系统软件工程UML类图关系总结 待优化： 文章中已标记，可以优化的地方。 待研究： 文章中已标记，掌握不数量的地方。 1.需求：设计一个：个人消费记账系统 功能角度分析： 一个可以支持导入导出的记账系统数据、支持手动记账、支持分类别、 统计显示消费数据和消费对象、支持对消费数据做出评论、支持数据转换为图表并做出总结; 支持借款催收功能； 模块角度分析： 用户管理：  登录注册模块、个人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人消费记账系统">
+<meta property="og:url" content="http://example.com/2024/05/06/moneysys/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="个人消费记账系统软件工程UML类图关系总结 待优化： 文章中已标记，可以优化的地方。 待研究： 文章中已标记，掌握不数量的地方。 1.需求：设计一个：个人消费记账系统 功能角度分析： 一个可以支持导入导出的记账系统数据、支持手动记账、支持分类别、 统计显示消费数据和消费对象、支持对消费数据做出评论、支持数据转换为图表并做出总结; 支持借款催收功能； 模块角度分析： 用户管理：  登录注册模块、个人">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\orange\AppData\Roaming\Typora\typora-user-images\image-20240323151206042.png">
+<meta property="og:image" content="d:\Desktop\%E5%A4%A7%E4%B8%89%E4%B8%8B%E5%AD%A6%E6%9C%9F\2312114747%E6%9E%97%E8%BF%90%E6%B3%93Python%E5%AE%9E%E9%AA%8C\%E5%91%98%E5%B7%A5%E8%80%83%E5%8B%A4%E6%89%93%E5%8D%A1%E7%B3%BB%E7%BB%9F\%E6%95%99%E5%AD%A6%E8%B5%84%E6%96%99\Django%E7%AC%94%E8%AE%B0\image\%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E7%9B%B8%E5%90%8C.jpg">
+<meta property="article:published_time" content="2024-05-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-06T06:35:39.621Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\orange\AppData\Roaming\Typora\typora-user-images\image-20240323151206042.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.28.1">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Hexo</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2024/05/06/moneysys/"><span class="title">个人消费记账系统</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2024-05-05T16:00:00.000Z">2024-05-06</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2024-05-06T06:35:39.621Z">2024-05-06</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>个人消费记账系统</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="个人消费记账系统"><a href="#个人消费记账系统" class="headerlink" title="个人消费记账系统"></a>个人消费记账系统</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WaitForFree/article/details/8920652?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-8920652-blog-23654539.235%5Ev43%5Epc_blog_bottom_relevance_base5&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-8920652-blog-23654539.235%5Ev43%5Epc_blog_bottom_relevance_base5&amp;utm_relevant_index=5">软件工程UML类图关系总结</a></p>
+<p><code>待优化：</code> 文章中已标记，可以优化的地方。</p>
+<p><code>待研究：</code> 文章中已标记，掌握不数量的地方。</p>
+<h2 id="1-需求："><a href="#1-需求：" class="headerlink" title="1.需求："></a>1.需求：</h2><p>设计一个：个人消费记账系统</p>
+<p><strong>功能角度分析：</strong></p>
+<p>一个可以支持<strong>导入导出</strong>的<strong>记账系统数据</strong>、支持手动记账、支持<strong>分类别</strong>、 <strong>统计</strong>显示<strong>消费数据</strong>和<strong>消费对象</strong>、支持对消费数据做出<strong>评论</strong>、支持数据转换为<strong>图表</strong>并做出<strong>总结</strong>; 支持<strong>借款催收</strong>功能；</p>
+<p><strong>模块角度分析：</strong></p>
+<p>用户管理：  登录注册模块、个人信息模块</p>
+<p>财务管理：（查账模块、催收模块（消息提示、欠款状态、欠款消除））</p>
+<hr/>
+
+<p>导入导出模块：导入csv类型的数据、导出为……</p>
+<ol>
+<li>上传文件建立一张表，相关属性有：”文件备注“，”文件类型“，”文件路径“ <ol>
+<li>上传数据之后，需要跳转到文件管理页面，显示<code>上传文件</code>这张表</li>
+</ol>
+</li>
+</ol>
+<p>文件管理模块：可以将导入导出的数据显示再此处；可以对文件进行批处理;</p>
+<hr/>
+
+<p>设计师角度分析：一句话概括需求，再进行名称解释</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>记账系统数据</strong>：包括<strong>个人消费明细</strong>和<strong>统计数据明细</strong></p>
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+个人消费明细：</p>
+<table>
+<thead>
+<tr>
+<th>交易时间</th>
+<th>交易类型</th>
+<th>交易对方</th>
+<th>商品</th>
+<th>收&#x2F;支</th>
+<th>金额(元)</th>
+<th>支付方式</th>
+<th>当前状态</th>
+<th>交易单号</th>
+<th>商户单号</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+统计消费明细：  <code> 单独建一个导出数据表？？</code></p>
+<ul>
+<li>日、月、年、自定义消费属性，附加当次统计<strong>总结</strong><ul>
+<li><input disabled="" type="checkbox"> 总结：比如说明消费类型及金额</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>django 加密md5</p>
+</li>
+<li><p>再编辑需要有默认名:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">form = xxxxxModelForm(instance = row_object)</span><br><span class="line">render(*********)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置密码：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="C:\Users\orange\AppData\Roaming\Typora\typora-user-images\image-20240323151206042.png" alt="image-20240323151206042"></p>
+</li>
+<li><p>重置密码相同： self.instance 是dxxxxx-model实际参数传输过来的对象</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="D:\Desktop\大三下学期\2312114747林运泓Python实验\员工考勤打卡系统\教学资料\Django笔记\image\重置密码相同.jpg"></p>
+</li>
+</ol>
+<h2 id="3-功能进度"><a href="#3-功能进度" class="headerlink" title="3.功能进度"></a>3.功能进度</h2><ul>
+<li><p><input checked="" disabled="" type="checkbox"> 
+登入、注册、登出</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+个人信息模块</p>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+导入导出模块</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 导入</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+文件管理模块</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 显示用户上传的文件</li>
+<li><input disabled="" type="checkbox"> 删除用户上传的文件</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+财务管理</p>
+<ul>
+<li><input disabled="" type="checkbox"> 查看<ul>
+<li><input checked="" disabled="" type="checkbox"> 查看用户每条账单数据</li>
+<li><input checked="" disabled="" type="checkbox"> 查看用户日账单</li>
+<li><input disabled="" type="checkbox"> 查看用户月账单</li>
+<li><input disabled="" type="checkbox"> 查看用户年账单</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 添加<ul>
+<li><input disabled="" type="checkbox"> 添加一个用户账单记录</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 管理<ul>
+<li><input disabled="" type="checkbox"> 根据消费类型分类</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 账单+图表分析</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+日程管理</p>
+<ul>
+<li><input disabled="" type="checkbox"> 添加一条日程信息</li>
+<li><input disabled="" type="checkbox"> 查看日程信息<ul>
+<li><input disabled="" type="checkbox"> 查看日、月、年日程信息</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 日程提示</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 某些人用了注释才知道[^注释]</li>
+</ul>
+<p>[^注释]:somebody  that I used to know.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="开发设计"><a href="#开发设计" class="headerlink" title="开发设计"></a>开发设计</h1><p>财务管理模块</p>
+<ul>
+<li><input disabled="" type="checkbox"> 查看<ul>
+<li><input checked="" disabled="" type="checkbox"> 查看用户每条账单数据</li>
+<li><input checked="" disabled="" type="checkbox"> 查看用户日账单</li>
+<li><input checked="" disabled="" type="checkbox"> 查看用户月账单</li>
+<li><input checked="" disabled="" type="checkbox"> 查看用户年账单</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 添加<ul>
+<li><input disabled="" type="checkbox"> 添加一个用户账单记录</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 管理<ul>
+<li><input disabled="" type="checkbox"> 根据消费类型分类</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 账单+图表分析</li>
+</ul>
+<p>难点：添加记录 、根据消费类型分类</p>
+<p><strong>设计思路：</strong></p>
+<p>​	<strong>按年月日查询消费记录</strong>：</p>
+<ol>
+<li>工具：ajax 、pandas</li>
+<li></li>
+</ol>
+<p>​	<strong>添加记录</strong></p>
+<ol>
+<li>获取原始表格：</li>
+<li>添加记录：按时间分类，</li>
+<li>把时间和文件里面的时间依次进行判断，如果：<code>日期相同，时间大于</code>时，就将记录插入其中；</li>
+</ol>
+<p>​	<strong>根据消费类型分类</strong></p>
+<ol>
+<li><p>设置关键字 字典，进行模糊判断；在将不在其中的数据放到<code>其他消费</code>字段中</p>
+<ol>
+<li><p>比如：总共有3个key: <code>饮食</code>，<code>娱乐</code>，<code>生活用品</code>，<code>出行</code>；</p>
+</li>
+<li><pre><code class="python">&#123;
+    &#39;饮食&#39;:[&#39;吃&#39;,&#39;喝&#39;,&#39;炖罐&#39;,&#39;食堂&#39;,],
+    &#39;娱乐&#39;:[&#39;猫眼&#39;,&#39;棋牌&#39;，&#39;台球&#39;,],
+    &#39;生活用品&#39;:[&#39;牙膏&#39;,&#39;刮胡刀&#39;,],
+    &#39;出行&#39;:[&#39;铁路&#39;,&#39;公交&#39;,&#39;地铁&#39;,],
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">2. 获取原始数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+pass
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"># 工具语法</span><br><span class="line"></span><br><span class="line">## django</span><br><span class="line"></span><br><span class="line">1. 模板：</span><br><span class="line"></span><br><span class="line">   ```html</span><br><span class="line">   1.调用数据全都是用点，</span><br><span class="line">   eg：</span><br><span class="line">   	列表：list.0.0.i</span><br><span class="line">   	字典：dict|hash:field</span><br><span class="line">   </span><br><span class="line">   2.在javaScript，echarts中</span><br><span class="line">   eg:</span><br><span class="line">   	data = &#123;&#123; list|safe &#125;&#125;</span><br><span class="line">   注意：还没学会使用字典；</span><br><span class="line">   </span><br><span class="line">   3.实例：</span><br><span class="line">   &#123;% for field in accountList %&#125;</span><br><span class="line">   &lt;div class=&quot;form-group my-3&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;card &quot;&gt;</span><br><span class="line">           &lt;div class=&quot;card-header&quot; &gt;</span><br><span class="line">               &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">                   &lt;div class=&quot;card-title col-md-6&quot; style=&quot;margin-bottom: 0px;&quot;&gt;</span><br><span class="line">                       日期：&#123;&#123; field.0.0.0 &#125;&#125; &lt;/div&gt;</span><br><span class="line">   </span><br><span class="line">                   &lt;div class=&quot;card-title col-md-6&quot; style=&quot;margin-bottom: 0px;&quot;&gt;</span><br><span class="line">                       出：&#123;&#123; daydict|hash:field.0.0.0 &#125;&#125;元 &lt;/div&gt;</span><br><span class="line">               &lt;/div&gt;</span><br><span class="line">           &lt;/div&gt;</span><br><span class="line">           &#123;% for value in field %&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>django有特有的模板语法：</p>
+<blockquote>
+<ol>
+<li><p>导入静态文件需要配置 </p>
+<ol>
+<li>添加到顶部：{ % load static % }</li>
+</ol>
+</li>
+<li><p>继承html模板：{ %extends ‘layout.html’% }</p>
+<ol>
+<li>模板里面添加区块内容：{ % black css % }</li>
+</ol>
+</li>
+<li><p>嵌套集合、列表、字典都是通过<code>.</code>进行获取属性的</p>
+<ol>
+<li>list.0.0.0 </li>
+<li>dict|hash:键名</li>
+<li><strong>json 还不会使用</strong></li>
+</ol>
+</li>
+<li><p>多集合属性可以同时循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在python 将list、dict属性放到列表中 account = [ list, dict] </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; 例子</span></span><br><span class="line"><span class="string">    accountList,dayAccounts = getAccount(info)</span></span><br><span class="line"><span class="string">    dayAccounts.index = dayAccounts.index.strftime(&#x27;%Y-%m-%d&#x27;)</span></span><br><span class="line"><span class="string">    dayAccounts = dayAccounts.to_records()</span></span><br><span class="line"><span class="string">    # print(dayAccounts)</span></span><br><span class="line"><span class="string">    # print(dayAccounts)</span></span><br><span class="line"><span class="string">    accounts = zip(accountList,dayAccounts)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#在模板中实现同时循环</span></span><br><span class="line">&#123;% <span class="keyword">for</span> <span class="built_in">list</span>,<span class="built_in">dict</span> <span class="keyword">in</span> account %&#125;</span><br><span class="line">	日期：&#123;&#123; <span class="built_in">list</span><span class="number">.0</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Form ：errors,label,</p>
+</li>
+<li><p>post请求提交form时，需要添加：{ % csrf_token % }</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h2><p><code>还没学会使用</code></p>
+<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><p>待整理</p>
+<h2 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h2><p>热力图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    top: 30,</span><br><span class="line">    left: &#x27;center&#x27;,</span><br><span class="line">    text: &#x27;Daily Step Count&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    formatter: function (params) &#123;</span><br><span class="line">      return params.value[0] + &#x27;&lt;br/&gt;&#x27; + params.value[1] + &#x27; steps&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    min: 0,</span><br><span class="line">    max: 10000,</span><br><span class="line">    type: &#x27;piecewise&#x27;,</span><br><span class="line">    orient: &#x27;horizontal&#x27;,</span><br><span class="line">    left: &#x27;center&#x27;,</span><br><span class="line">    top: 65,</span><br><span class="line">    inRange: &#123;</span><br><span class="line">      color: [&#x27;#ebedf0&#x27;, &#x27;#c6e48b&#x27;, &#x27;#7bc96f&#x27;, &#x27;#239a3b&#x27;, &#x27;#196127&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  calendar: &#123;</span><br><span class="line">    top: 120,</span><br><span class="line">    left: 30,</span><br><span class="line">    right: 30,</span><br><span class="line">    cellSize: [&#x27;auto&#x27;, 13],</span><br><span class="line">    range: &#x27;2016&#x27;,</span><br><span class="line">    itemStyle: &#123;</span><br><span class="line">      borderWidth: 0.5</span><br><span class="line">    &#125;,</span><br><span class="line">    yearLabel: &#123; show: false &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  series: [</span><br><span class="line">    &#123;</span><br><span class="line">      type: &#x27;heatmap&#x27;,</span><br><span class="line">      coordinateSystem: &#x27;calendar&#x27;,</span><br><span class="line">      data: getVirtualData(&#x27;2016&#x27;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      type: &#x27;effectScatter&#x27;, // 涟漪效果</span><br><span class="line">      coordinateSystem: &#x27;calendar&#x27;,</span><br><span class="line">      data: getVirtualData(&#x27;2016&#x27;,8000),</span><br><span class="line">      symbolSize: function (val) &#123;</span><br><span class="line">        return val[1] / 1000; // 涟漪大小和步数相关</span><br><span class="line">      &#125;,</span><br><span class="line">      showEffectOn: &#x27;render&#x27;, // 渲染时显示涟漪</span><br><span class="line">      rippleEffect: &#123;</span><br><span class="line">        brushType: &#x27;stroke&#x27; // 波纹类型为边界</span><br><span class="line">      &#125;,</span><br><span class="line">      hoverAnimation: true,</span><br><span class="line">      label: &#123;</span><br><span class="line">        show: false</span><br><span class="line">      &#125;,</span><br><span class="line">      itemStyle: &#123;</span><br><span class="line">        color: &#x27;purple&#x27;, // 涟漪颜色</span><br><span class="line">        shadowBlur: 10,</span><br><span class="line">        shadowColor: &#x27;#333&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      zlevel: 1</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">option &amp;&amp; myChart.setOption(option);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import * as echarts from &#x27;echarts&#x27;;</span><br><span class="line"></span><br><span class="line">var chartDom = document.getElementById(&#x27;main&#x27;);</span><br><span class="line">var myChart = echarts.init(chartDom);</span><br><span class="line">var option;</span><br><span class="line"></span><br><span class="line">function getVirtualData(year) &#123;</span><br><span class="line">  const date = +echarts.time.parse(year + &#x27;-01-01&#x27;);</span><br><span class="line">  const end = +echarts.time.parse(+year + 1 + &#x27;-01-01&#x27;);</span><br><span class="line">  const dayTime = 3600 * 24 * 1000;</span><br><span class="line">  const data = [];</span><br><span class="line">  for (let time = date; time &lt; end; time += dayTime) &#123;</span><br><span class="line">    data.push([</span><br><span class="line">      echarts.time.format(time, &#x27;&#123;yyyy&#125;-&#123;MM&#125;-&#123;dd&#125;&#x27;, false),</span><br><span class="line">      Math.floor(Math.random() * 10000)</span><br><span class="line">    ]);</span><br><span class="line">  &#125;</span><br><span class="line">  return data;</span><br><span class="line">&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    top: 30,</span><br><span class="line">    left: &#x27;center&#x27;,</span><br><span class="line">    text: &#x27;Daily Step Count&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    formatter: function (params) &#123;</span><br><span class="line">      return params.value[0] + &#x27;&lt;br/&gt;&#x27; + params.value[1] + &#x27; steps&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    min: 0,</span><br><span class="line">    max: 10000,</span><br><span class="line">    type: &#x27;piecewise&#x27;,</span><br><span class="line">    orient: &#x27;horizontal&#x27;,</span><br><span class="line">    left: &#x27;center&#x27;,</span><br><span class="line">    top: 65,</span><br><span class="line">    inRange: &#123;</span><br><span class="line">      color: [&#x27;#ebedf0&#x27;, &#x27;#c6e48b&#x27;, &#x27;#7bc96f&#x27;, &#x27;#239a3b&#x27;, &#x27;#196127&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  calendar: &#123;</span><br><span class="line">    top: 120,</span><br><span class="line">    left: 30,</span><br><span class="line">    right: 30,</span><br><span class="line">    cellSize: [&#x27;auto&#x27;, 13],</span><br><span class="line">    range: &#x27;2016&#x27;,</span><br><span class="line">    itemStyle: &#123;</span><br><span class="line">      borderWidth: 0.5</span><br><span class="line">    &#125;,</span><br><span class="line">    yearLabel: &#123; show: false &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  series: &#123;</span><br><span class="line">    type: &#x27;heatmap&#x27;,</span><br><span class="line">    coordinateSystem: &#x27;calendar&#x27;,</span><br><span class="line">    data: getVirtualData(&#x27;2016&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">option &amp;&amp; myChart.setOption(option);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="学习日记"><a href="#学习日记" class="headerlink" title="学习日记"></a>学习日记</h1><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>学习内容</th>
+<th>完成情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>【2024年4月5日】:sunny:</td>
+<td>1. 使用pandas完成对<code>年月日的转化并且统计金额</code>,<code>熟悉使用pandas的语法格式、行列使用</code></td>
+<td>待完成</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="开发模块代码"><a href="#开发模块代码" class="headerlink" title="开发模块代码"></a>开发模块代码</h1><h2 id="1-用户管理"><a href="#1-用户管理" class="headerlink" title="1.用户管理"></a>1.用户管理</h2><h3 id="1-用户注册、登录"><a href="#1-用户注册、登录" class="headerlink" title="1.用户注册、登录"></a>1.用户注册、登录</h3><p><code>细节</code>：</p>
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+问题一：form中验证错误和返回错误时，遇到很多问题：</p>
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+比如field.errors,field.error.0, loginForm.code.errors </p>
+<p><code>解决问题的方式：</code> 猥琐使用  loginForm.属性.errors，每一个字段都添加；<strong>待优化</strong></p>
+</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+问题二：<strong>验证码问题</strong></p>
+<ol>
+<li>画验证码图片 ：返回img，code；</li>
+<li>上传： 设置url，  return HttpResponse(stream.getvalue())  ，code 保存到session；  <strong>待研究</strong></li>
+</ol>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+问题三：登录和注册放在一起遇到的<code>验证冲突问题</code> 和 <code> 部分渲染问题</code>；</p>
+<ol>
+<li>部分渲染:  返回时模板渲染页时需要携带reg和login的<strong>Form</strong></li>
+<li>验证冲突问题：<ol>
+<li>描述：提交一方，另一方提示未填写错误；</li>
+<li>解决：提交按钮设置默认值作为区分，</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+问题四：<strong>特殊问题</strong></p>
+<ol>
+<li>request.POST..get() 和 Form.cleaned_data.get()；有些差异；</li>
+<li>filter 和 get 返回值问题</li>
+</ol>
+</li>
+</ul>
+<p><strong>html</strong> :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span><br><span class="line">    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;</span><br><span class="line">    &lt;!--  &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;--&gt;</span><br><span class="line">    &lt;!--  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js&quot;&gt;&lt;/script&gt;--&gt;</span><br><span class="line">    &lt;!--  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js&quot;&gt;&lt;/script&gt;--&gt;</span><br><span class="line">    &lt;!-- Bootstrap --&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &#x27;plugins/bootstrap-3.4.1/css/bootstrap.css&#x27; %&#125;&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line"></span><br><span class="line">        body&#123;</span><br><span class="line">            background-image: url(&#123;% static &#x27;/img/登入背景.jpg&#x27; %&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        .box&#123;</span><br><span class="line">            width:1000px;</span><br><span class="line">            min-height:650px;</span><br><span class="line">            border:1px solid #c0c0c0;</span><br><span class="line">            margin: 10px auto 0 auto;</span><br><span class="line">            border-radius: 50px;</span><br><span class="line">            background-color: #ffffff;</span><br><span class="line">            padding-top: 30px;</span><br><span class="line">            /*显示不了*/</span><br><span class="line">            /*background-image: url(&quot;img/云.png&quot;);*/</span><br><span class="line">            /*opacity:0.2;*/</span><br><span class="line">        &#125;</span><br><span class="line">        .box0 &#123;</span><br><span class="line">            width: 450px;</span><br><span class="line">            border:1px solid #c0c0c0;</span><br><span class="line">            /*居中*/</span><br><span class="line">            margin-top:  200px;</span><br><span class="line">            margin-left: 350px;</span><br><span class="line">            padding: 0 20px;</span><br><span class="line">            background-image: url(&#123;% static &#x27;/img/登入背景.jpg&#x27; %&#125;);</span><br><span class="line">            border-radius: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        .reg&#123;</span><br><span class="line">            border:1px solid #c0c0c0;</span><br><span class="line">            border-radius: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        .box0 h2&#123;</span><br><span class="line">            text-align:center;</span><br><span class="line">            margin-bottom: 30px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .form-control &#123;</span><br><span class="line">            width: 80%;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            border: 1px solid #ccc;</span><br><span class="line">            border-radius: 4px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        h2&#123;</span><br><span class="line">            font-family: 华文楷体;</span><br><span class="line">            font-size: 32px;</span><br><span class="line">            text-align: center;</span><br><span class="line">            margin-top: 15px;</span><br><span class="line">        &#125;</span><br><span class="line">        select&#123;</span><br><span class="line">            background-color: green;</span><br><span class="line">            color:white;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;爱记账&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;container box&quot;&gt;</span><br><span class="line">    &lt;h3 style=&quot;padding-left: 30px;font-size: 32px;font-family: 华文楷体&quot;&gt;注册&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">        &lt;form class=&quot;form-horizontal&quot; action=&quot;/reg/&quot; method=&quot;post&quot;  novalidate&gt;</span><br><span class="line">            &lt;div class=&quot;col-md-5 col-md-offset-1 reg&quot; &gt;</span><br><span class="line">                    &#123;% csrf_token %&#125;</span><br><span class="line">                    &#123;% for field in regForm %&#125;</span><br><span class="line">                        &lt;div class=&quot;form-group &quot; style=&quot;margin-top: 20px&quot;&gt;</span><br><span class="line">                            &lt;label class=&quot;col-sm-3 control-label&quot;  &gt;&#123;&#123; field.label &#125;&#125; &lt;/label&gt;</span><br><span class="line">                            &lt;div class=&quot;col-sm-9&quot;&gt;</span><br><span class="line">                                &#123;&#123; field &#125;&#125;</span><br><span class="line">                                &lt;span style=&quot;color:red&quot;&gt;&#123;&#123; field.errors &#125;&#125;&lt;/span&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                    &#123;% endfor %&#125;</span><br><span class="line">                &lt;button class=&quot;btn-primary col-md-offset-4&quot; style=&quot;width: 80px;height: 30px; border-radius:10px;margin-bottom: 15px&quot; type=&quot;submit&quot; name=&quot;reg&quot; value=&quot;注册&quot;&gt;注册&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--提交--&gt;</span><br><span class="line">        &lt;form class=&quot;form-horizontal&quot;  action=&quot;/reg/&quot; method=&quot;post&quot; novalidate&gt;</span><br><span class="line">            &#123;% csrf_token %&#125;</span><br><span class="line">            &lt;h3 style=&quot;padding-left: 30px;margin-top: 180px;font-size: 32px;font-family: 华文楷体&quot;&gt;登录&lt;/h3&gt;</span><br><span class="line">            &lt;div class=&quot;col-md-5 col-md-offset-6 reg&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;form-group &quot; style=&quot;margin-top: 20px; position:relative&quot;&gt;</span><br><span class="line">                    &lt;label class=&quot;col-sm-3 control-label&quot;  &gt;&#123;&#123; loginForm.username.label &#125;&#125; &lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-9&quot;&gt;</span><br><span class="line">                        &#123;&#123; loginForm.username &#125;&#125;</span><br><span class="line">                        &lt;span style=&quot;color:red; position:absolute&quot;&gt;&#123;&#123; loginForm.username.errors &#125;&#125;&lt;/span&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group &quot; style=&quot;margin-top: 20px&quot;&gt;</span><br><span class="line">                    &lt;label class=&quot;col-sm-3 control-label&quot;  &gt;&#123;&#123; loginForm.password.label &#125;&#125; &lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-9&quot;&gt;</span><br><span class="line">                        &#123;&#123; loginForm.password &#125;&#125;</span><br><span class="line">                        &lt;span style=&quot;color:red&quot;&gt;&#123;&#123; loginForm.password.errors &#125;&#125;&lt;/span&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-3 control-label&quot;&gt;</span><br><span class="line">                    &lt;label&gt;&#123;&#123; loginForm.code.label &#125;&#125;&lt;/label&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-5&quot;&gt;</span><br><span class="line">                     &#123;&#123; loginForm.code &#125;&#125;</span><br><span class="line">                    &lt;span style=&quot;color:red&quot;&gt;&#123;&#123; loginForm.code.errors &#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;col-lg-offset-1&quot;&gt;</span><br><span class="line">                      &lt;div class=&quot;mt-3&quot;&gt;</span><br><span class="line">                          &lt;a href=&quot;/reg/&quot; &gt;</span><br><span class="line">                              &lt;img id=&quot;image_code&quot; src=&quot;/image/code/&quot; style=&quot;width: 125px;&quot;&gt;</span><br><span class="line">                          &lt;/a&gt;</span><br><span class="line">                          &lt;p style=&quot;color:purple&quot;&gt;点击图片刷新验证码&lt;/p&gt;</span><br><span class="line">                      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-offset-5 col-sm-7&quot;&gt;</span><br><span class="line">                    &lt;!-- Indicates a successful or positive action --&gt;</span><br><span class="line">                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot; name=&quot;login&quot; value=&quot;登录&quot;&gt;Sign in&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">        &#123;&#123; form1.errors &#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;&#123;% static &#x27;js/jquery-3.6.0.js&#x27; %&#125;&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;&#123;% static &#x27;plugins/bootstrap-3.4.1/js/bootstrap.js&#x27; %&#125;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>views.user</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#登录、注册放在一起了</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">reg</span>(<span class="params">request</span>):</span><br><span class="line">    regForm = UserInfoForm()</span><br><span class="line">    loginForm = UserInfoLoginForm()</span><br><span class="line">    <span class="keyword">if</span> request.method==<span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">&#x27;reg.html&#x27;</span>,&#123;<span class="string">&quot;regForm&quot;</span>:regForm,<span class="string">&quot;loginForm&quot;</span>:loginForm&#125;)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#判断是login、reg提交的数据</span></span><br><span class="line">    reg1 = request.POST.get(<span class="string">&quot;reg&quot;</span>)</span><br><span class="line">    login1 = request.POST.get(<span class="string">&quot;login&quot;</span>)</span><br><span class="line">    <span class="comment"># print(reg1,login1)</span></span><br><span class="line">    <span class="keyword">if</span> reg1:</span><br><span class="line">        regForm = UserInfoForm(data=request.POST)</span><br><span class="line">        <span class="keyword">if</span> regForm.is_valid():</span><br><span class="line">            <span class="comment">#从数据库获取用户信息，没有则添加</span></span><br><span class="line">            username = regForm.cleaned_data.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">            password = regForm.cleaned_data.get(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">            user_obj = models.UserInfo.objects.<span class="built_in">filter</span>(username=username).first()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> user_obj:</span><br><span class="line">                models.UserInfo.objects.create(username=username,password=password)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                regForm.errors[<span class="string">&quot;username&quot;</span>] = <span class="string">&quot;当前用户已存在！&quot;</span></span><br><span class="line">                <span class="keyword">return</span> render(request, <span class="string">&#x27;reg.html&#x27;</span>, &#123;<span class="string">&quot;regForm&quot;</span>: regForm,<span class="string">&quot;loginForm&quot;</span>:loginForm&#125;,)</span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">&#x27;/index/&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> render(request,<span class="string">&#x27;reg.html&#x27;</span>,&#123;<span class="string">&quot;regForm&quot;</span>:regForm,<span class="string">&quot;loginForm&quot;</span>:loginForm&#125;)</span><br><span class="line">        </span><br><span class="line">    <span class="comment">#登录</span></span><br><span class="line">    <span class="keyword">elif</span> login1:</span><br><span class="line">        loginForm = UserInfoLoginForm(data=request.POST)</span><br><span class="line">        <span class="comment">#先判断验证码</span></span><br><span class="line">        user_input_code = request.POST.get(<span class="string">&quot;code&quot;</span>)</span><br><span class="line">        code = request.session.get(<span class="string">&#x27;image_code&#x27;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(loginForm.errors)</span><br><span class="line">        <span class="keyword">if</span> code.upper() != user_input_code.upper():</span><br><span class="line">            loginForm.errors[<span class="string">&quot;code&quot;</span>] = <span class="string">&quot;验证码错误&quot;</span></span><br><span class="line">            <span class="keyword">return</span> render(request, <span class="string">&#x27;reg.html&#x27;</span>, &#123;<span class="string">&quot;loginForm&quot;</span>: loginForm, <span class="string">&quot;regForm&quot;</span>: regForm&#125;)</span><br><span class="line">		<span class="comment">#判断账号密码，并且设置user session 生存期</span></span><br><span class="line">        <span class="keyword">if</span> loginForm.is_valid():</span><br><span class="line">            username = loginForm.cleaned_data.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">            password = loginForm.cleaned_data.get(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;go index&quot;</span>)</span><br><span class="line">            <span class="comment">#将信息保存到session,并且设置session的生存期为七天</span></span><br><span class="line">            request.session[<span class="string">&#x27;info&#x27;</span>] = &#123;<span class="string">&#x27;username&#x27;</span>: username, <span class="string">&#x27;password&#x27;</span>: password&#125;</span><br><span class="line">            request.session.set_expiry(<span class="number">7</span> * <span class="number">24</span> * <span class="number">3600</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">&#x27;/index/&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;reg.html&#x27;</span>, &#123;<span class="string">&quot;loginForm&quot;</span>: loginForm,<span class="string">&quot;regForm&quot;</span>:regForm &#125; )</span><br></pre></td></tr></table></figure>
+
+<p>form.py </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件路径： app01/utils/form.py</span></span><br><span class="line"><span class="comment">#BosstStrapForm 略写 </span></span><br><span class="line"><span class="comment">#注册</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserInfoForm</span>(<span class="title class_ inherited__">BootStrapForm</span>):</span><br><span class="line">    username = forms.CharField(label=<span class="string">&quot;用户名&quot;</span>, min_length=<span class="number">2</span>)</span><br><span class="line">    password = forms.CharField(label=<span class="string">&quot;密码&quot;</span>, widget=forms.PasswordInput(render_value=<span class="literal">True</span>), min_length = <span class="number">3</span>)</span><br><span class="line">    confirm_password = forms.CharField(</span><br><span class="line">        label=<span class="string">&quot;确认密码:&quot;</span>,</span><br><span class="line">        min_length=<span class="number">3</span>,</span><br><span class="line">        widget=forms.PasswordInput(render_value=<span class="literal">True</span>),</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clean</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;在通过基础验证的干净数据中get获取字段&quot;&quot;&quot;</span></span><br><span class="line">        pwd1 = self.cleaned_data.get(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">        pwd2 = self.cleaned_data.get(<span class="string">&#x27;confirm_password&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> pwd1 == pwd2:</span><br><span class="line">            <span class="comment"># 数据没问题，那么原封不动返回即可</span></span><br><span class="line">            <span class="keyword">return</span> self.cleaned_data</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 错误信息储存到 errors &#123;&#x27;__all__&#x27;:[e,]&#125;</span></span><br><span class="line">            self.errors[<span class="string">&quot;confirm_password&quot;</span>] =<span class="string">&quot;两次密码输入不同&quot;</span></span><br><span class="line">            <span class="keyword">raise</span> forms.ValidationError(<span class="string">&#x27;两次密码输入不同&#x27;</span>)</span><br><span class="line"><span class="comment"># 登录</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserInfoLoginForm</span>(<span class="title class_ inherited__">BootStrapForm</span>):</span><br><span class="line">    username = forms.CharField(label=<span class="string">&quot;用户名&quot;</span>, min_length=<span class="number">2</span>)</span><br><span class="line">    password = forms.CharField(label=<span class="string">&quot;密码&quot;</span>, widget=forms.PasswordInput(render_value=<span class="literal">True</span>), min_length=<span class="number">3</span>)</span><br><span class="line">    code = forms.CharField(label=<span class="string">&quot;验证码&quot;</span>,widget=forms.TextInput())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clean</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;在通过基础验证的干净数据中get获取字段&quot;&quot;&quot;</span></span><br><span class="line">        username = self.cleaned_data.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">        password = self.cleaned_data.get(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">        user_obj = models.UserInfo.objects.<span class="built_in">filter</span>(username=username).first()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> user_obj:</span><br><span class="line">            self.errors[<span class="string">&quot;username&quot;</span>] = <span class="string">&quot;当前用户不存在！&quot;</span></span><br><span class="line">            <span class="keyword">raise</span> forms.ValidationError(<span class="string">&quot;当前用户不存在&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> password != user_obj.password:</span><br><span class="line">            self.errors[<span class="string">&quot;password&quot;</span>] = <span class="string">&quot;密码错误！&quot;</span></span><br><span class="line">            <span class="keyword">raise</span> forms.ValidationError(<span class="string">&quot;密码错误&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.cleaned_data</span><br></pre></td></tr></table></figure>
+
+<p><strong>验证码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件路径： app01/utils/yanzm.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont, ImageFilter</span><br><span class="line"></span><br><span class="line"><span class="comment"># &quot;C:\Users\24119\Desktop\pyweb\web\static\font\AaManYuShouXieTi.ttf&quot;</span></span><br><span class="line"><span class="comment"># 参数已经写的很清楚了</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_code</span>(<span class="params">font_file=<span class="string">&quot;Candara.ttf&quot;</span>, width=<span class="number">120</span>, height=<span class="number">30</span>, char_length=<span class="number">4</span>, font_size=<span class="number">28</span></span>):</span><br><span class="line">    code = []</span><br><span class="line">    img = Image.new(mode=<span class="string">&#x27;RGB&#x27;</span>, size=(width, height), color=(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">    draw = ImageDraw.Draw(img, mode=<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rndChar</span>():</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        生成随机字母</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">chr</span>(random.randint(<span class="number">65</span>, <span class="number">90</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rndColor</span>():</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        生成随机颜色</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> (random.randint(<span class="number">0</span>, <span class="number">255</span>), random.randint(<span class="number">10</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 写文字</span></span><br><span class="line">    font = ImageFont.truetype(font_file, font_size)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(char_length):</span><br><span class="line">        char = rndChar()</span><br><span class="line">        code.append(char)</span><br><span class="line">        h = random.randint(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">        draw.text([i * width / char_length, h], char, font=font, fill=rndColor())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 写干扰点</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        draw.point([random.randint(<span class="number">0</span>, width), random.randint(<span class="number">0</span>, height)], fill=rndColor())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 写干扰圆圈</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        draw.point([random.randint(<span class="number">0</span>, width), random.randint(<span class="number">0</span>, height)], fill=rndColor())</span><br><span class="line">        x = random.randint(<span class="number">0</span>, width)</span><br><span class="line">        y = random.randint(<span class="number">0</span>, height)</span><br><span class="line">        draw.arc((x, y, x + <span class="number">4</span>, y + <span class="number">4</span>), <span class="number">0</span>, <span class="number">90</span>, fill=rndColor())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 画干扰线</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        x1 = random.randint(<span class="number">0</span>, width)</span><br><span class="line">        y1 = random.randint(<span class="number">0</span>, height)</span><br><span class="line">        x2 = random.randint(<span class="number">0</span>, width)</span><br><span class="line">        y2 = random.randint(<span class="number">0</span>, height)</span><br><span class="line"></span><br><span class="line">        draw.line((x1, y1, x2, y2), fill=rndColor())</span><br><span class="line"></span><br><span class="line">    img = img.<span class="built_in">filter</span>(ImageFilter.EDGE_ENHANCE_MORE)</span><br><span class="line">    <span class="keyword">return</span> img, <span class="string">&#x27;&#x27;</span>.join(code)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 1. 直接打开</span></span><br><span class="line">    img, code = check_code()</span><br><span class="line">    <span class="built_in">print</span>(code)</span><br><span class="line">    <span class="comment"># img.show()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 写入文件</span></span><br><span class="line">    img,code = check_code()</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;code.png&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        img.save(f,<span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 写入内存(Python3)</span></span><br><span class="line">    <span class="comment"># from io import BytesIO</span></span><br><span class="line">    <span class="comment"># img,code = check_code()</span></span><br><span class="line">    <span class="comment"># stream = BytesIO()</span></span><br><span class="line">    <span class="comment"># img.save(stream, &#x27;png&#x27;)</span></span><br><span class="line">    <span class="comment"># stream.getvalue()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. 写入内存（Python2）</span></span><br><span class="line">    <span class="comment"># import StringIO</span></span><br><span class="line">    <span class="comment"># stream = StringIO.StringIO()</span></span><br><span class="line">    <span class="comment"># img.save(stream, &#x27;png&#x27;)</span></span><br><span class="line">    <span class="comment"># stream.getvalue()</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>验证码渲染前端函数</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件路径 app01/views/other.py</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># 打开reg.html默认会生成效验码</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">img_code</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 声明全局字段</span></span><br><span class="line">    <span class="keyword">global</span> code_string</span><br><span class="line">    <span class="comment"># 调用check_code()函数</span></span><br><span class="line">    img, code_string = check_code()</span><br><span class="line">    stream = BytesIO()</span><br><span class="line">    img.save(stream, <span class="string">&#x27;png&#x27;</span>)</span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    request.session[<span class="string">&#x27;image_code&#x27;</span>] = code_string</span><br><span class="line">    request.session.set_expiry(<span class="number">60</span>)</span><br><span class="line">    <span class="built_in">print</span>(code_string)</span><br><span class="line">    <span class="comment"># 返回的是图像,当然我们还取到了一个code_string,是图片验证码的原字符，这用来和前端输入的验证码进行比较</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(stream.getvalue())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-用户文件管理"><a href="#2-用户文件管理" class="headerlink" title="2.用户文件管理"></a>2.用户文件管理</h3><p><code>描述：</code> 只显示用户上传的文件</p>
+<p><code>回顾困境：</code>设计过程中，因为在setting.py中设置了<code>MEDIA_ROOT</code>，<strong>在拼接完路径时，无法访问</strong>；在一直在犹豫文件路径应该怎么形式保存；<strong>读取用户的专属文件</strong>，</p>
+<p><code>总结：</code>  回头看，确实是瞎操心；两个并不冲突，只需要理清先后顺序就能解决；不要想着同时解决，<strong>先完成功能在考虑优化，不要同时考虑两件事情;</strong></p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li><input disabled="" type="checkbox"> 问题一：media下文件分类问题：<ol>
+<li>最终设置：保存路劲均为media的下一层</li>
+</ol>
+</li>
+<li><input disabled="" type="checkbox"> 问题二：读取全部文件问题<ul>
+<li><input disabled="" type="checkbox"> 场景：不同用户，相同文件之间的冲突</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 问题三：支持分类显示</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><strong>在app下新建media文件夹 ，设置不同文件包</strong></p>
+<blockquote>
+<p>media&#x2F;account&#x2F;微信支付账单(20230901-20231201).csv</p>
+<p>media&#x2F;img&#x2F;北极熊.png</p>
+<p>media&#x2F;radio</p>
+</blockquote>
+<p><strong>setting.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#必须配置</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR,<span class="string">&quot;media/&quot;</span>)</span><br><span class="line">MEDIA_URL = <span class="string">&quot;/media/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>视图函数：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件管理</span></span><br><span class="line"><span class="comment">#使用到了两个库：userinfo用户表和UserFile文件表</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">document_manage</span>(<span class="params">request</span>):</span><br><span class="line">    form = documentManagerForm</span><br><span class="line">    info = request.session.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">    user_obj = UserInfo.objects.<span class="built_in">filter</span>(username=info.get(<span class="string">&quot;username&quot;</span>)).first()</span><br><span class="line">    userFile = UserFile.objects.<span class="built_in">filter</span>(userinfo=user_obj)</span><br><span class="line">    <span class="comment"># print(&quot;userFile:&quot;,userFile,type(userFile))</span></span><br><span class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> userFile:</span><br><span class="line">        <span class="keyword">if</span> field.fileType == <span class="number">1</span>:</span><br><span class="line">            s_filename = field.filepath.name.split(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">            field.filepath = s_filename[<span class="built_in">len</span>(s_filename) - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;index_document.html&#x27;</span>,&#123;<span class="string">&quot;form&quot;</span>:form,<span class="string">&quot;userFile&quot;</span>:userFile&#125;)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;index_document.html&#x27;</span>)</span><br><span class="line"><span class="comment">#根据文件类型查看文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">document_Typeid</span>(<span class="params">request,tid</span>):</span><br><span class="line">    form = documentManagerForm</span><br><span class="line">    info = request.session.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">    user_obj = UserInfo.objects.<span class="built_in">filter</span>(username=info.get(<span class="string">&quot;username&quot;</span>)).first()</span><br><span class="line">    userFile = UserFile.objects.<span class="built_in">filter</span>(userinfo=user_obj, fileType=tid)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;成功&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> userFile:</span><br><span class="line">        <span class="keyword">if</span> tid == <span class="number">1</span>:</span><br><span class="line">            s_filename = field.filepath.name.split(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">            field.filepath = s_filename[<span class="built_in">len</span>(s_filename) - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index_document.html&#x27;</span>,&#123;<span class="string">&quot;form&quot;</span>:form,<span class="string">&quot;userFile&quot;</span>:userFile&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Form模型</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">documentManagerForm</span>(<span class="title class_ inherited__">BootStrapForm</span>):</span><br><span class="line">    <span class="built_in">id</span> = forms.IntegerField()</span><br><span class="line">    fileType = forms.CharField(</span><br><span class="line">        label=<span class="string">&quot;文件类型&quot;</span>,</span><br><span class="line">        widget=forms.Select()</span><br><span class="line">    )</span><br><span class="line">    filepath = forms.FileField(</span><br><span class="line">        label=<span class="string">&quot;文件名&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    fileinfo = forms.CharField(</span><br><span class="line">        max_length=<span class="number">128</span>,</span><br><span class="line">        label=<span class="string">&quot;备注&quot;</span>,</span><br><span class="line">    ),</span><br></pre></td></tr></table></figure>
+
+<p><strong>HTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#x27;indexLayout.html&#x27; %&#125;</span><br><span class="line">&#123;% block css %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    显示用户的所有文件</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bs-example&quot;</span> <span class="attr">data-example-id</span>=<span class="string">&quot;hoverable-table&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel panel-default&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-heading&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon glyphicon-th-list&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                        文件列表</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-body&quot;</span>&gt;</span></span><br><span class="line">                      <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;table table-hover&quot;</span>&gt;</span></span><br><span class="line">                          <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                              <span class="tag">&lt;<span class="name">th</span>&gt;</span>序号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">th</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dropdown mt-1&quot;</span>&gt;</span></span><br><span class="line">                                      <span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;color: black&quot;</span> <span class="attr">class</span>=<span class="string">&quot; dropdown-toggle show&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;dropdownMenuButton&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;dropdown&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">                                        文件类型</span><br><span class="line">                                      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                                      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;dropdown-menu &quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;dropdownMenuButton&quot;</span> <span class="attr">style</span>=<span class="string">&quot;position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(0px, -40px, 0px);&quot;</span> <span class="attr">data-popper-placement</span>=<span class="string">&quot;top-start&quot;</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;dropdown-item&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/index/&#123;&#123; 1 &#125;&#125;/documentManage/&quot;</span>&gt;</span>账簿文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;dropdown-item&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/index/&#123;&#123; 3 &#125;&#125;/documentManage/&quot;</span>&gt;</span>图像<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;dropdown-item&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/index/&#123;&#123; 2 &#125;&#125;/documentManage/&quot;</span>&gt;</span>音频文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;dropdown-item&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/index/documentManage/&quot;</span>&gt;</span>全部<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                                      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                              <span class="tag">&lt;<span class="name">th</span>&gt;</span>文件名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                              <span class="tag">&lt;<span class="name">th</span>&gt;</span>备注<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                              <span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                          <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">                          <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">                            &#123;% for field in userFile %&#125;</span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>  <span class="attr">style</span>=<span class="string">&quot;text-align: center;vertical-align: middle&quot;</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; field.id &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; field.get_fileType_display &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                &#123;% if field.fileType == 3 %&#125;</span><br><span class="line">                                    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/media/&#123;&#123; field.filepath &#125;&#125;&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height:60px&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                &#123;% else %&#125;</span><br><span class="line">                                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; field.filepath &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; field.fileinfo &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                                  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn-primary btn-sm&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                                  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn-danger btn-sm&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                              <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                            &#123;% endfor %&#125;</span><br><span class="line">                          <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2024/05/06/hello-world/">2024-05-06</a></div><div class="item" id="next"></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">John Doe</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.1">Stellar 1.28.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%B6%88%E8%B4%B9%E8%AE%B0%E8%B4%A6%E7%B3%BB%E7%BB%9F"><span class="toc-text">个人消费记账系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%EF%BC%9A"><span class="toc-text">1.需求：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E8%BF%9B%E5%BA%A6"><span class="toc-text">3.功能进度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%AE%BE%E8%AE%A1"><span class="toc-text">开发设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ajax"><span class="toc-text">ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pandas"><span class="toc-text">pandas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echarts"><span class="toc-text">echarts</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0"><span class="toc-text">学习日记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9D%97%E4%BB%A3%E7%A0%81"><span class="toc-text">开发模块代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">1.用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E3%80%81%E7%99%BB%E5%BD%95"><span class="toc-text">1.用户注册、登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%A8%E6%88%B7%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">2.用户文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>Join Discussion</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `Just`,
+      min: `minutes ago`,
+      hour: `hours ago`,
+      day: `days ago`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.28.1" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
